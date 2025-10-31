@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magnus - Complete Payment</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #13100e;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 15px;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: #0e0c0a;
+      border-radius: 15px;
+      padding: 25px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 0 25px rgba(255, 184, 77, 0.15);
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffb84d;
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+    }
+
+    .info p {
+      font-size: 0.95rem;
+      margin: 8px 0;
+    }
+
+    .highlight {
+      color: #ffb84d;
+      font-weight: 600;
+    }
+
+    .copy-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.05);
+      padding: 10px 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    .copy-box:hover {
+      background: rgba(255,184,77,0.1);
+    }
+
+    .copy-box i {
+      color: #ffb84d;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #ffb84d, #ff8c00);
+      color: #000;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #ffcc66, #ffa733);
+      transform: translateY(-2px);
+    }
+
+.testimonial {
+      margin-top: 40px;
+      background: #1a1a1a;
+      border-left: 4px solid #ffb84d;
+      border-radius: 12px;
+      padding: 20px;
+      font-size: 0.95rem;
+      font-style: italic;
+      min-height: 80px;
+      transition: 0.5s;
+      position: relative;
+    }
+
+    .testimonial::after {
+      content: "✔ Verified User";
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+      font-size: 0.8rem;
+      color: #25D366;
+      font-weight: 600;
+    }
+
+    footer {
+      background-color: #0e0c0a;
+      color: #ffb84d;
+      text-align: center;
+      padding: 40px 20px 70px;
+      position: relative;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    footer .chat-link {
+      color: #ffb84d;
+      font-weight: 600;
+      text-decoration: underline;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    footer .chat-link:hover {
+      color: #fff;
+      text-shadow: 0 0 6px rgba(255, 184, 77, 0.7);
+    }
+
+    footer .built-by {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      background: linear-gradient(135deg, #ffb84d, #ff8c00);
+      color: #000;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(255, 140, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    footer .built-by:hover {
+      background: linear-gradient(135deg, #ffcf73, #ff9c1a);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 184, 77, 0.6);
+    }
+        .header-img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- ✅ Top Image -->
+    <img src="Image5.jpg" alt="Magnus Payment Banner" class="header-img">
+
+    <h1>Complete Your Payment</h1>
+    
+    <div class="info">
+      <p><strong>Name:</strong> <span id="fullname"></span></p>
+      <p><strong>Username:</strong> <span id="username"></span></p>
+      <p><strong>Email:</strong> <span id="email"></span></p>
+      <p><strong>Phone:</strong> <span id="phone"></span></p>
+      <p><strong>Country:</strong> <span id="country"></span></p>
+      <p><strong>Package:</strong> <span id="package"></span></p>
+    </div>
+
+    <div class="copy-box" onclick="copyText('sessionIdText')">
+      <span><strong>Session ID:</strong> <span id="sessionIdText"></span></span>
+      <i class="fa-solid fa-copy"></i>
+    </div>
+
+    <div class="copy-box" onclick="copyText('accountNumber')">
+      <span><strong>Account Number:</strong> <span id="accountNumber">6455396418</span></span>
+      <i class="fa-solid fa-copy"></i>
+    </div>
+
+    <div class="copy-box" onclick="copyText('accountName')">
+      <span><strong>Account Name:</strong> <span id="accountName">JOHN PATRICK ERONG</span></span>
+      <i class="fa-solid fa-copy"></i>
+    </div>
+
+    <div class="copy-box" onclick="copyText('amount')">
+      <span><strong>Amount:</strong> <span id="amount"></span></span>
+      <i class="fa-solid fa-copy"></i>
+    </div>
+    
+    <div class="copy-box" onclick="copyText('bankName')">
+  <span><strong>Bank Name:</strong> <span id="bankName">Moniepoint MFB</span></span>
+  <i class="fa-solid fa-copy"></i>
+</div>
+
+
+<div id="timer-section" style="text-align:center;margin-top:20px;">
+  <p style="color:#ff6666;font-weight:600;">
+    Time left to use this account: <span id="timeLeft">3600</span>s
+  </p>
+  <button id="requestBtn" class="btn" style="background:#ffb84d;color:black;width:100%;max-width:250px;">
+    Request another account
+  </button>
+</div>
+    <a href="https://wa.me/+2349128299584?text=Hello+I+want+to+register+for+Magnus" class="btn">I Have Paid – Confirm on WhatsApp</a>
+    <a href="https://wa.me/+2349128299584?text=Hello+I+want+to+register+for+Magnus" class="btn" style="margin-top:10px;background:transparent;color:#ffb84d;border:1px solid #ffb84d;">Need Help? Chat Admin</a>
+
+
+  </div>
+ <div class="testimonial" id="testimonialBox">
+      “Got credited instantly after making payment. Super fast and verified!”
+      <br><strong>– Aisha R., Kano</strong>
+    </div>
+ 
+  <!-- Footer -->
+  <footer>
+    <p>
+      🌍 <strong>Not in Nigeria?</strong> Message us directly on WhatsApp:<br>
+      <a href="https://wa.me/+2349128299584?text=Hello+I+want+to+register+for+Magnus" target="_blank" class="chat-link">Click to Chat with Admin</a>
+    </p>
+    <p style="margin-top: 20px;">© 2025 <strong>MAGNUS</strong>. All rights reserved.</p>
+    <a href="https://wa.me/+2349128299584?text=Hello+I+want+to+register+for+Magnus" target="_blank" class="built-by">Need help??</a>
+  </footer>
+  <script>
+    // Load user data from localStorage
+    const userData = JSON.parse(localStorage.getItem("magnusUser"));
+    if (userData) {
+      document.getElementById("fullname").textContent = userData.fullname;
+      document.getElementById("username").textContent = userData.username;
+      document.getElementById("email").textContent = userData.email;
+      document.getElementById("phone").textContent = userData.phone;
+      document.getElementById("country").textContent = userData.country;
+      document.getElementById("package").textContent = userData.packageSel;
+      document.getElementById("sessionIdText").textContent = `${userData.sessionId} - ${userData.fullname} (${userData.username})`;
+
+      // Auto-match amount from package
+      let amount = "₦0";
+      if (userData.packageSel.includes("Business")) amount = "₦28,500";
+      else if (userData.packageSel.includes("Pro")) amount = "₦17,500";
+      else if (userData.packageSel.includes("Lite")) amount = "₦11,000";
+      document.getElementById("amount").textContent = amount;
+    }
+
+    // Copy function
+    function copyText(id) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text);
+      alert("Copied: " + text);
+    }
+    
+    // Timer countdown (60 minutes)
+let timeLeft = 3600; // 60 minutes in seconds
+const timerDisplay = document.getElementById("timeLeft");
+const timerInterval = setInterval(() => {
+  timeLeft--;
+  timerDisplay.textContent = timeLeft;
+  
+  if (timeLeft <= 0) {
+    clearInterval(timerInterval);
+    document.getElementById("timer-section").innerHTML = `
+      <p style="color:#ff6666;font-weight:600;">Session expired. Please request another account.</p>
+      <button class="btn" id="requestBtn2" style="background:#fff;color:#000;width:100%;max-width:250px;">Request another account</button>
+    `;
+    document.getElementById("requestBtn2").addEventListener("click", loadSecondAccount);
+  }
+}, 1000);
+
+// Function to request another account
+document.getElementById("requestBtn").addEventListener("click", loadSecondAccount);
+
+function loadSecondAccount() {
+  // Example of switching to another account
+  document.getElementById("accountNumber").textContent = "7045499890";
+  document.getElementById("accountName").textContent = "ERONG JOHN PATRICK";
+  document.getElementById("bankName").textContent = "PalmPay"; // ✅ added
+
+  // Optional: reset timer
+  timeLeft = 3600;
+  timerDisplay.textContent = timeLeft;
+}
+
+  </script>
+
+  <script>
+    // ✅ TESTIMONIAL ROTATOR
+    const testimonials = [
+      "Paid ₦11,000 for Lite package – got instant confirmation. – Aisha R., Kano",
+      "Upgraded to Pro, withdrawal processed same hour! – James K., Lagos",
+      "Smooth process. Magnus really paying! – Yusuf D., Abuja",
+      "Business plan activated successfully. – Anita B., Port Harcourt",
+      "Received login within 3 mins after payment. – Rahmat O., Ibadan",
+      "No delay at all. Love this platform! – Victor M., Enugu",
+      "My upgrade was confirmed fast. – Stella U., Owerri",
+      "Paid ₦28,500 and got credited quickly. – Ibrahim L., Kaduna",
+      "Great customer support and fast verification. – Mary T., Jos",
+      "Reliable and transparent service. – Femi S., Abeokuta",
+      "Credited same day I paid. – Naomi E., Warri",
+      "Zero delay, Magnus is real! – Blessing I., Benin",
+      "Business upgrade successful. – Kelvin O., Uyo",
+      "Second payment confirmed instantly. – Chika D., Awka",
+      "Easy to pay, easy to earn. – Idris P., Maiduguri",
+      "Payment verification was so fast! – Sandra G., Asaba",
+      "Lite plan approved quickly. – David E., Minna",
+      "No stress, instant approval. – Zainab H., Ilorin",
+      "Withdrawal success! – Henry K., Onitsha",
+      "Legit platform, 5 stars! – Joy C., Calabar"
+    ];
+
+    let current = 0;
+    const box = document.getElementById("testimonialBox");
+
+    function rotateTestimonials() {
+      const [message, name] = testimonials[current].split("–");
+      box.innerHTML = `"${message.trim()}"<br><strong>– ${name.trim()}</strong>`;
+      current = (current + 1) % testimonials.length;
+    }
+
+    setInterval(rotateTestimonials, 5000); // Change every 5 seconds
+  </script>
+</body>
+</html>
